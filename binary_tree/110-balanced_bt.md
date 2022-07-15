@@ -10,7 +10,7 @@
 
 **示例 1：**
 
- ![image-20220412224027579](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220412224027579.png)
+ ![img](https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg)
 
 ```
 输入：root = [3,9,20,null,null,15,7]
@@ -19,7 +19,7 @@
 
 **示例 2：**
 
- ![image-20220412224046553](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220412224046553.png)
+ ![img](https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg)
 
 ```
 输入：root = [1,2,2,3,3,null,null,4,4]

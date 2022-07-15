@@ -8,7 +8,7 @@
 
 **示例 1:**
 
- ![image-20220411233017623](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220411233017623.png)
+ ![img](https://assets.leetcode.com/uploads/2020/08/17/linked.jpg)
 
 ```
 输入: head = [-10,-3,0,5,9]

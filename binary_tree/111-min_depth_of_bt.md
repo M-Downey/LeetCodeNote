@@ -10,7 +10,7 @@
 
 **示例 1：**
 
- ![image-20220412223657983](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220412223657983.png)
+ ![img](https://assets.leetcode.com/uploads/2020/10/12/ex_depth.jpg)
 
 ```
 输入：root = [3,9,20,null,null,15,7]

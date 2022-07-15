@@ -6,7 +6,7 @@
 
 **示例 1：**
 
- ![image-20220411003540344](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220411003540344.png)
+  ![img](https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg)
 
 ```
 输入：root = [3,9,20,null,null,15,7]

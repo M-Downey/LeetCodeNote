@@ -8,7 +8,7 @@
 
 **示例 1：**
 
- ![image-20220411232445656](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220411232445656.png)
+ ![img](https://assets.leetcode.com/uploads/2021/02/18/btree1.jpg)
 
 ```
 输入：nums = [-10,-3,0,5,9]
@@ -16,11 +16,11 @@
 解释：[0,-10,5,null,-3,null,9] 也将被视为正确答案：
 ```
 
- ![image-20220411232527889](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220411232527889.png)
+ ![img](https://assets.leetcode.com/uploads/2021/02/18/btree2.jpg)
 
 **示例 2：**
 
- ![image-20220411232547642](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220411232547642.png)
+ ![img](https://assets.leetcode.com/uploads/2021/02/18/btree.jpg)
 
 ```
 输入：nums = [1,3]

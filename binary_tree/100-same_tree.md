@@ -8,7 +8,7 @@
 
 **示例 1：**
 
- ![image-20220404224151776](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220404224151776.png)
+ ![img](https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg)
 
 ```
 输入：p = [1,2,3], q = [1,2,3]
@@ -17,7 +17,7 @@
 
 **示例 2：**
 
- ![image-20220404224209420](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220404224209420.png)
+ ![img](https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg)
 
 ```
 输入：p = [1,2], q = [1,null,2]
@@ -26,7 +26,7 @@
 
 **示例 3：**
 
- ![image-20220404224225063](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220404224225063.png)
+ ![img](https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg)
 
 ```
 输入：p = [1,2,1], q = [1,1,2]

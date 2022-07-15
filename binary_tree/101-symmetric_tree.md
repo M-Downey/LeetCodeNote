@@ -6,7 +6,7 @@
 
 **示例 1：**
 
- ![image-20220405231214599](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220405231214599.png)
+ ![img](https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg)
 
 ```
 输入：root = [1,2,2,3,4,4,3]
@@ -15,7 +15,7 @@
 
 **示例 2：**
 
- ![image-20220405231224933](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220405231224933.png)
+ ![img](https://assets.leetcode.com/uploads/2021/02/19/symtree2.jpg)
 
 ```
 输入：root = [1,2,2,null,3,null,3]
