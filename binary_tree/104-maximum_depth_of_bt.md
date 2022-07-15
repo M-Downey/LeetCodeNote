@@ -1,4 +1,6 @@
-### 104. 二叉树的最大深度
+### [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
+
+- 简单
 
 给定一个二叉树，找出其最大深度。
 
