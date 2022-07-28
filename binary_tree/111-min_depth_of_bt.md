@@ -60,3 +60,31 @@ class Solution:
             queue = tmp
 ```
 
+实现二：
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        cnt = 0
+        if not root:
+            return 0
+        q = [root]
+        while q:
+            cnt += 1
+            tmp = []
+            for node in q:
+                if not node.left and not node.right:
+                    return cnt
+                if node.left:
+                    tmp.append(node.left)
+                if node.right:
+                    tmp.append(node.right)
+            q = tmp
+```
+

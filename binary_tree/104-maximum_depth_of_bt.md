@@ -40,3 +40,32 @@ class Solution:
         return a if a > b else b
 ```
 
+**解法二：BFS**
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        cnt = 0
+        if not root:
+            return cnt
+        q = [root]
+        while q:
+            cnt += 1
+            tmp = []
+            for node in q:
+                ln = node.left
+                rn = node.right
+                if ln:
+                    tmp.append(ln)
+                if rn:
+                    tmp.append(rn)
+            q = tmp 
+        return cnt
+```
+
