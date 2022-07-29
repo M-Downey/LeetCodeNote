@@ -78,3 +78,36 @@ class Solution:
         return res
 ```
 
+**解法二：栈，更好理解的方式**
+
+**前序遍历：**中，左，右
+
+每次循环，pop栈顶元素，将右孩子，左孩子依次入栈（因为左孩子要先出栈）
+
+ ![二叉树前序遍历（迭代法）](https://tva1.sinaimg.cn/large/008eGmZEly1gnbmss7603g30eq0d4b2a.gif)
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+        stack = []
+        ans = []
+        stack.append(root)
+
+        while stack:
+            node = stack.pop()
+            ans.append(node.val)
+            if node.right:
+                stack.append(node.right)
+            if node.left:
+                stack.append(node.left) 
+        return ans
+```
+

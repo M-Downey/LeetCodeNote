@@ -70,3 +70,37 @@ class Solution:
         return ans
 ```
 
+**解法二：更好理解**
+
+后序遍历：左，右，中
+
+因为栈中每次pop出的都是中间节点，所以**可以求中，右，左**，然后`reverse`
+
+只需和前序遍历，左右子树入栈顺序相反即可
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if not root:
+            return []
+
+        ans = []
+        stack = []
+        stack.append(root)
+        while stack:
+            node = stack.pop()
+            ans.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        ans.reverse()
+        return ans
+```
+
