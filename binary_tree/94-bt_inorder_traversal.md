@@ -55,3 +55,28 @@ class Solution:
         return res
 ```
 
+**解法二：递归**
+
+Python的函数中调用函数，内部函数能改变列表，字典的值，无法改变外部函数的普通变量值（能访问）
+
+```python
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        # 左，中，右
+        ans = []
+        def traversal(root):
+            if not root:
+                return 
+            traversal(root.left)
+            ans.append(root.val)
+            traversal(root.right)
+        traversal(root)
+        return ans
+```
+
