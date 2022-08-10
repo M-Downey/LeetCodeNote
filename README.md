@@ -17,3 +17,13 @@ This repository is set to record my leetcode note.
 竞赛分数打卡
 
  ![image-20220728224131458](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220728224131458.png)
+
+### 22.8.5
+
+150题打卡
+
+ ![image-20220805231054436](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220805231054436.png)
+
+竞赛分数打卡
+
+ ![image-20220805231023177](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20220805231023177.png)
