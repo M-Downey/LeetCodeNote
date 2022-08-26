@@ -38,4 +38,4 @@ This repository is set to record my leetcode note.
 
 250题打卡
 
- ![Snipaste_2022-08-26_21-12-40](D:\Codes\Notes\lc-note\assets\Snipaste_2022-08-26_21-12-40.jpg)
+ ![Snipaste_2022-08-26_21-12-40.jpg](https://github.com/M-Downey/LeetCodeNote/blob/master/assets/Snipaste_2022-08-26_21-12-40.jpg?raw=true)
