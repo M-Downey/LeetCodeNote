@@ -50,4 +50,4 @@ This repository is set to record my leetcode note.
 
 350题打卡
 
- ![](.\assets\Snipaste_2022-09-25_15-24-26.jpg)
+ ![](https://github.com/M-Downey/LeetCodeNote/blob/master/assets/Snipaste_2022-09-25_15-24-26.jpg?raw=true)
