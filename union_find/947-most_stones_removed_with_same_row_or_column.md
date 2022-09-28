@@ -87,7 +87,7 @@ class UnionFind:
         rootX, rootY = self.find(x), self.find(y)
         if rootX == rootY:
             return
-        if rootX < rootY:
+        if self.size[rootX] < self.size[rootY]:
             rootX, rootY = rootY, rootX
         self.ancestor[rootY] = rootX
         self.size[rootX] += self.size[rootY]
