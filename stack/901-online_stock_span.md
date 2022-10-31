@@ -58,3 +58,29 @@ class StockSpanner:
 # param_1 = obj.next(price)
 ```
 
+三叶版实现
+
+```python
+class StockSpanner:
+    # 找到每个元素左边第一个更大的元素
+    def __init__(self):
+        # 用(idx, price)存储股票
+        self.stack = []
+        # 当前位置
+        self.idx = 0
+
+    def next(self, price: int) -> int:
+        ans = 1
+        # 只要当前价格更大就一直出栈
+        while self.stack and price >= self.stack[-1][1]:
+            self.stack.pop()
+        prev = -1 if not self.stack else self.stack[-1][0]
+        ans = self.idx - prev
+        self.stack.append((self.idx, price))
+        self.idx += 1
+        return ans
+# Your StockSpanner object will be instantiated and called as such:
+# obj = StockSpanner()
+# param_1 = obj.next(price)
+```
+
