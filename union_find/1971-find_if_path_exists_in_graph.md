@@ -43,7 +43,13 @@
 
 **解法一：DFS**
 
+两种 `DFS` 思路
+
+1.  从 `source` 开始 `DFS` 遍历，把能遍历到的所有节点都放入 `visited` 中，最后判断 `destination` 是否在 `visited` 中即可
+2. 从 `source` 开始 `DFS` 遍历，每次遍历时判断当前节点是否是 `destination` ， `DFS` 的作用是判断能否找到 `destination` 如果能找到就返回 `True` ，否则返回 `False` 
+
 ```python
+# 思路一：
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
         def dfs(src):
@@ -58,6 +64,33 @@ class Solution:
         visited = set()
         dfs(source)
         return destination in visited
+```
+
+```python
+# 思路二：
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # DFS
+        # 从 source 开始遍历，它周围的顶点，直到找到 destination
+        node_to_edges = defaultdict(list)
+        for u, v in edges:
+            node_to_edges[u].append(v)
+            node_to_edges[v].append(u)
+        # print(node_to_edges)
+        visited = set()
+        def dfs(node):
+            visited.add(node)
+            if node == destination:
+                return True
+            for v in node_to_edges[node]:
+                if v not in visited:
+                    if dfs(v):
+                        return True
+            # 错的，不能回溯，回溯一定要保证是树状结构，是图有环就不行了
+            # 而且这里要dfs遍历当前节点node的其他邻接点，邻接点dfs后并不需要从visited中取出
+            # visited.remove(node)
+            return False
+        return dfs(source)
 ```
 
 **解法二：并查集**
@@ -91,5 +124,30 @@ class UnionFind:
     
     def connected(self, x, y):
         return self.find(x) == self.find(y)
+```
+
+**解法三：BFS**
+
+```python
+class Solution:
+    def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        # BFS
+        # 从 source 遍历所有的邻接点，并记录在哈希表中，最后判断
+        node_to_edges = defaultdict(list)
+        for u, v in edges:
+            node_to_edges[u].append(v)
+            node_to_edges[v].append(u)
+        visited = set()
+        q = [source]
+        visited.add(source)
+        while q:
+            tmp = []
+            for u in q:
+                for v in node_to_edges[u]:
+                    if v not in visited:
+                        tmp.append(v)
+                        visited.add(v)
+            q = tmp
+        return destination in visited
 ```
 
