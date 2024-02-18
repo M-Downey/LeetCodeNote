@@ -65,3 +65,26 @@ class Solution:
             k -= 1
         return res
 ```
+
+```java
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int len = nums.length;
+        int left = 0;
+        int right = len - 1;
+        int[] res = new int[len];
+        for(int i = len - 1; i >= 0; i--){
+            // 找一个平方更大的添加到结果数组中，并移动指针
+            if(Math.pow(nums[left], 2) > Math.pow(nums[right], 2)){
+                res[i] = (int)Math.pow(nums[left], 2);
+                left += 1;
+            }else{
+                res[i] = (int)Math.pow(nums[right], 2);
+                right -= 1;
+            }
+        }
+        return res;
+    }
+}
+```
+

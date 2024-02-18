@@ -59,3 +59,88 @@ class Solution:
         return ans
 ```
 
+java 实现
+
+```java
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    public List<List<Integer>> levelOrder(Node root) {
+        List<List<Integer>> res = new ArrayList();
+        if(root == null){
+            return res;
+        }
+        List<Node> q = new ArrayList();
+        q.add(root);
+        while(q != null && q.size() > 0){
+            // vals 保存当前层的所有值 nodes保存下一层节点
+            List<Integer> vals = new ArrayList();
+            List<Node> nodes = new ArrayList();
+            for(int i = 0; i < q.size(); i++){
+                Node node = q.get(i);
+                vals.add(node.val);
+                // System.out.println(node.children);
+                if(node.children != null && node.children.size() > 0){
+                    for(int j = 0; j < node.children.size(); j++){
+                        nodes.add(node.children.get(j));
+                    }
+                }
+            }
+            // System.out.println(nodes);
+            res.add(vals);
+            q = nodes;
+        }
+        return res;
+    }
+}
+```
+
+java 官方版
+
+```java
+class Solution {
+    public List<List<Integer>> levelOrder(Node root) {
+        if (root == null) {
+            return new ArrayList<List<Integer>>();
+        }
+
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        Queue<Node> queue = new ArrayDeque<Node>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            // 获得当前层的节点数，level 保存当前层的所有 value
+            int cnt = queue.size();
+            List<Integer> level = new ArrayList<Integer>();
+            for (int i = 0; i < cnt; ++i) {
+                Node cur = queue.poll(); // poll 方法出队
+                level.add(cur.val);
+                for (Node child : cur.children) {
+                    queue.offer(child); // offer 方法入队
+                }
+            }
+            ans.add(level);
+        }
+
+        return ans;
+    }
+}
+```
+
