@@ -60,6 +60,8 @@ class Solution:
 
 每次选中间的节点作为分割点，递归生成左右子树，生成的一定是平衡的BST
 
+选择中间节点作为分割点，尽可能平分数组，左右子数组为左右子树。此时就出现了子问题，可以递归解决。递归终点，当数组没有元素时，返回空子树。当前节点创建根节点，递归构建左右子树。
+
 ```python
 # Definition for a binary tree node.
 # class TreeNode:
@@ -69,16 +71,44 @@ class Solution:
 #         self.right = right
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
-        if not nums:
+				if not nums:
             return None
-        if len(nums) == 1:
-            node = TreeNode(nums[0])
-            return node
         
         mid = len(nums) // 2
         root = TreeNode(nums[mid])
-        root.left = self.sortedArrayToBST(nums[:mid])
-        root.right = self.sortedArrayToBST(nums[mid+1:])
+        root.left = self.sortedArrayToBST(nums[: mid])
+        root.right = self.sortedArrayToBST(nums[mid + 1:])
         return root
+```
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
+            return null;
+        }
+        int mid = n / 2;
+        TreeNode root = new TreeNode(nums[mid]);
+        root.left = sortedArrayToBST(Arrays.copyOfRange(nums, 0, mid));
+        root.right = sortedArrayToBST(Arrays.copyOfRange(nums, mid + 1, n));
+        return root;
+    }
+}
 ```
 
