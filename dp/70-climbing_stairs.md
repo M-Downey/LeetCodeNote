@@ -47,3 +47,23 @@ class Solution:
 ```
 
 空间复杂度是`O(N)`了，可以用滚动数组变成`O(1)`
+
+java 空间优化：
+
+```java
+class Solution {
+    public int climbStairs(int n) {
+        // dp[0] = 1, dp[1] = 1, dp[2] = 2
+        // dp[i] = dp[i - 1] + dp[i - 2]
+        int p0 = 1;
+        int p1 = 1;
+        for (int i = 2; i <= n; i++) {
+            int p2 = p0 + p1;
+            p0 = p1;
+            p1 = p2;
+        }
+        return p1;
+    }
+}
+```
+
