@@ -144,11 +144,46 @@ class Solution {
         }
     }
 }
+
+// 优化方向数组
+
+class Solution {
+    
+    private int[] dx = {-1, 0, 1, 0};
+
+    private int[] dy = {0, 1, 0, -1};
+
+    public int numIslands(char[][] grid) {
+        // 遍历 grid，每遇到陆地就 dfs，把联通的陆地都置 0，并把答案加一
+        int ans = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    dfs(i, j, grid);
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+
+    // 遍历当前陆地所有联通的陆地，置0
+    public void dfs(int x, int y, char[][] grid) {
+        grid[x][y] = '0';
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < 4; i++) {
+            int nx = x + dx[i];
+            int ny = y + dy[i];
+            if (nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] == '1') {
+                dfs(nx, ny, grid);
+            }
+        }
+    }
+}
 ```
-
-
-
-**解法二：BFS**
 
 **解法二：BFS**
 
@@ -178,9 +213,51 @@ class Solution:
         return cnt
 ```
 
+```java
+// Java
+class Solution {
+
+    private int[] dx = {-1, 0, 1, 0};
+
+    private int[] dy = {0, 1, 0, -1};
+
+    public int numIslands(char[][] grid) {
+        // bfs 思路也是遍历 grid，每遇到一个岛，就把岛给置0
+        int ans = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    // 如果陆地，bfs 遍历当前陆地
+                    ans++;
+                    grid[i][j] = '0';
+                    LinkedList<int[]> q = new LinkedList();
+                    q.add(new int[]{i, j});
+                    while (!q.isEmpty()) {
+                        int[] node = q.removeFirst();
+                        int row = node[0];
+                        int col = node[1];
+                        for (int k = 0; k < 4; k++) {
+                            int nr = row + dx[k];
+                            int nc = col + dy[k];
+                            if (nr >= 0 && nr < m && nc >= 0 && nc < n && grid[nr][nc] == '1') {
+                                grid[nr][nc] = '0';
+                                q.add(new int[]{nr, nc});
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+```
+
 **解法三：并查集**
 
-为了求出岛屿的数量，我们可以扫描整个二维网格。如果一个位置为 11，则将其与相邻四个方向上的 11 在并查集中进行合并。
+为了求出岛屿的数量，我们可以扫描整个二维网格。如果一个位置为 1，则将其与相邻四个方向上的 1 在并查集中进行合并。
 
 最终岛屿的数量就是并查集中连通分量的数目。
 
@@ -232,6 +309,7 @@ class Solution:
 ```
 
 ```java
+// Java
 class Solution {
     class UnionFind {
 
@@ -293,6 +371,79 @@ class Solution {
             }
         }
         return uf.cnt;
+    }
+}
+
+// 25.1.22
+class Solution {
+
+    private int[] dx = {-1, 0, 1, 0};
+
+    private int[] dy = {0, 1, 0, -1};
+
+    static class UnionFind {
+
+        private int[] ancestor;
+        
+        private int cnt;
+
+        public UnionFind(int n, int cnt) {
+            ancestor = new int[n];
+            for (int i = 0; i < n; i++) {
+                ancestor[i] = i;
+            }
+            this.cnt = cnt;
+        }
+
+        public int find(int x) {
+            if (x != ancestor[x]) {
+                ancestor[x] = find(ancestor[x]);
+            }
+            return ancestor[x];
+        }
+
+        public void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+            if (rootX != rootY) {
+                ancestor[rootY] = rootX;
+                cnt--;
+            }
+        }
+
+        public int getCnt() {
+            return cnt;
+        }
+    }
+
+    public int numIslands(char[][] grid) {
+        // UnionFind
+        int m = grid.length;
+        int n = grid[0].length;
+        int cnt = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    cnt++;
+                }
+            }
+        }
+        UnionFind uf = new UnionFind(m * n, cnt);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    for (int k = 0; k < 4; k++) {
+                        int nx = i + dx[k];
+                        int ny = j + dy[k];
+                        if (nx >= 0 && nx < m && ny >= 0 && ny < n && grid[nx][ny] == '1') {
+                            uf.union(i * n + j, nx * n + ny);
+                        }
+                    }
+                }
+            }
+        }
+        return uf.getCnt();
     }
 }
 ```
